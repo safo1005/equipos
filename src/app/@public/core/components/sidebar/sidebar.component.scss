@@ -1,0 +1,14 @@
+@import '../../../../../assets/styles/sidebar.scss';
+
+.bg-sidebar-menu-item {
+    background-color: #FFFFFF;
+}
+
+.bg-sidebar-menu-item:hover {
+    background-color: #F3F1F1;
+}
+
+.bg-sidebar-menu-item:active {
+    background-color: #E5E2E2;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #F3F1F1;
+}

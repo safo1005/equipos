@@ -1,13 +1,11 @@
-<h1>Monitoreo de Equipos</h1>
-<ul>
-    <li>
-      <a [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
-    </li>
-    <li>
-      <a [routerLink]="['/add-pc']" routerLinkActive="router-link-active" >Agregar Equipo</a>
-    </li>
-    <li>
-      <a [routerLink]="['/monitor-pc']" routerLinkActive="router-link-active" >Monitorear Equipos</a>
-    </li>
-  </ul>
-<router-outlet></router-outlet>
+<div class="d-flex" id="wrapper">
+    <app-sidebar></app-sidebar>
+    <!-- Page Content -->
+    <div id="page-content-wrapper" class="r-body">
+        <div class="container-fluid">
+            <app-title></app-title>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>
