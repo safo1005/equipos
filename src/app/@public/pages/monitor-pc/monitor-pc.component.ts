@@ -47,6 +47,8 @@ export class MonitorPcComponent implements OnInit {
         label: 'Fecha de Actualización'
       },
     ];
+
+    this.emulacion;
   }
 
   private initializeForm(equipo: any) {
@@ -116,5 +118,12 @@ export class MonitorPcComponent implements OnInit {
       }
       basicAlert(TYPE_ALERT.WARNING, res.message);
     });
+  }
+
+  emulacion() {
+    setInterval(function(){   
+      console.log(Math.floor((Math.random()*100)+1)); 
+  
+   }, 1000);
   }
 }
