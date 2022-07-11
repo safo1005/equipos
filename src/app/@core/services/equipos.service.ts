@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IRegisterEquipo } from '@core/interfaces/register.interface';
-import { REGISTER_EQUIPO } from '@graphql/operations/mutation/equipo';
+import { DELETE_EQUIPO, MODIFY_EQUIPO, REGISTER_EQUIPO } from '@graphql/operations/mutation/equipo';
 import { EQUIPOS_LIST_QUERY } from '@graphql/operations/query/equipo';
 import { ApiService } from '@graphql/services/api.service';
 import { Apollo } from 'apollo-angular';
@@ -31,6 +31,29 @@ export class EquiposService extends ApiService{
     }).pipe(
       map((result: any) => {
         return result.register;
+      })
+    );
+  }
+
+  update(equipo: IRegisterEquipo) {
+    return this.set(MODIFY_EQUIPO, {
+      equipo
+    }).pipe(
+      map((result: any) => {
+        return result.updateEquipo;
+      })
+    );
+  }
+
+  delete(id: string) {
+    return this.set(
+      DELETE_EQUIPO,
+      {
+        id
+      }
+    ).pipe(
+      map((result: any) => {
+        return result.deleteEquipo;
       })
     );
   }

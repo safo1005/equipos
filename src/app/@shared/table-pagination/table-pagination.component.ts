@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IInfoPage, IResultData } from '@core/interfaces/result-data.interface';
 import { EQUIPOS_LIST_QUERY } from '@graphql/operations/query/equipo';
 import { DocumentNode } from 'graphql';
@@ -7,26 +7,20 @@ import { TablePaginationService } from './table-pagination.service';
 import { map } from 'rxjs/internal/operators/map';
 import { ITableColumns } from '@core/interfaces/table-columns.interface';
 
+
 @Component({
   selector: 'app-table-pagination',
   templateUrl: './table-pagination.component.html',
   styleUrls: ['./table-pagination.component.scss']
 })
 export class TablePaginationComponent implements OnInit {
-  @Input() query: DocumentNode = EQUIPOS_LIST_QUERY;
-  @Input() context: object = {};
+  @Input() query: DocumentNode;
+  @Input() context: object;
   @Input() itemsPage = 20;
-  @Input() resultData: IResultData = {
-    listKey: '',
-    definitionKey: ''
-  };;
-  infoPage: IInfoPage = {
-    page: 1,
-    pages: 1,
-    itemsPage: this.itemsPage,
-    total: 1
-  };
+  @Input() resultData: IResultData;
+  infoPage: IInfoPage;
   @Input() tableColumns: Array<ITableColumns> | undefined;
+  @Output() manageItem = new EventEmitter<Array<any>>();
   data$: Observable<any> | undefined;
 
   constructor(private service: TablePaginationService) { }
@@ -58,6 +52,7 @@ export class TablePaginationComponent implements OnInit {
     this.data$ = this.service.getCollectionData(this.query, variables, {}).pipe(
       map((result: any) => {
         const data = result[this.resultData.definitionKey];
+        console.log(data);
         this.infoPage.pages = data.info.pages;
         this.infoPage.total = data.info.total;
         return data[this.resultData.listKey];
@@ -67,5 +62,9 @@ export class TablePaginationComponent implements OnInit {
 
   changePage() {
     this.loadData();
+  }
+
+  manageAction(action: string, data: any) {
+    this.manageItem.emit([action, data]);
   }
 }

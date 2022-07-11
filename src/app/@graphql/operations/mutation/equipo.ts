@@ -13,3 +13,25 @@ export const REGISTER_EQUIPO = gql `
     }
     ${ EQUIPO_FRAGMENT }
 `;
+
+export const MODIFY_EQUIPO = gql`
+    mutation modificarEquipo($equipo: EquipoInput!) {
+        updateEquipo(equipo: $equipo) {
+            status
+            message
+            equipo {
+                ...EquipoObject
+            }
+        }
+    }
+    ${ EQUIPO_FRAGMENT }
+`;
+
+export const DELETE_EQUIPO = gql`
+    mutation borrarEquipo($id: ID!) {
+        deleteEquipo(id: $id) {
+            status
+            message
+        }
+    }
+`;

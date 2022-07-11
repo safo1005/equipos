@@ -3,7 +3,6 @@
         <form class="forma" (ngSubmit)="add()" #forma="ngForm">
           <div class="cuadro box">
             <div class="content-logo">
-              <!-- <img class="logo" src="/assets/img/logos/logoGr.png" alt="" /> -->
             </div>
             <p class="lema">Agregar Equipo</p>
    
@@ -22,12 +21,12 @@
                 </div>
               </div>
 
-              <input type="text" placeholder="valor actual" name="valorActual" #valorActual="ngModel" [(ngModel)]="register.valorActual" class="form-control txt" [ngClass]="{ 'is-valid': valorActual.valid, 'is-invalid': valorActual.invalid }" required/>
-              <div class="alert alert-danger" *ngIf="valorActual.invalid && (valorActual.dirty || valorActual.touched)">
+              <input type="text" class="form-control txt" disabled placeholder="0"/>
+<!--               <div class="alert alert-danger" *ngIf="valorActual.invalid && (valorActual.dirty || valorActual.touched)">
                 <div *ngIf="valorActual.errors">
                   Ingrese el valor actual
                 </div>
-              </div>
+              </div> -->
             </div>
   
             <div>

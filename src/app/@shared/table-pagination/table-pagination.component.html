@@ -2,22 +2,27 @@
     <table class="table table-striped">
         <thead>
             <tr>
-            <th scope="col" *ngFor="let column of tableColumns">{{ column.label }}</th>
+                <th scope="col" *ngFor="let column of tableColumns">{{ column.label }}</th>
+                <th scope="col">Gestionar Información</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of data$ | async">
                 <td *ngFor="let val of tableColumns">{{ data[val.property] }}</td>
+                <td>
+                    <button type="button" class="btn btn-info" (click)="manageAction('edit', data)"><i class="fas fa-edit"></i></button> &nbsp;
+                    <button type="button" class="btn btn-danger" (click)="manageAction('delete', data)"><i class="fas fa-trash"></i></button>
+                </td>
             </tr>
         </tbody>
     </table>
 </div>
 
-<div class="d-flex justify-content-between p-2" *ngIf="infoPage.pages > 1" (pageChange)="changePage()">
+<div class="d-flex justify-content-between p-2">
     <ngb-pagination [collectionSize]="infoPage.total" [(page)]="infoPage.page" [pageSize]="infoPage.itemsPage">
     </ngb-pagination>
 
-    <select class="form-select" style="width: auto" [(ngModel)]="infoPage.itemsPage" (ngModelChange)="loadData()">
+    <select class="form-select" style="width: auto" [(ngModel)]="infoPage.itemsPage" (pageChange)="changePage()" (ngModelChange)="loadData()">
         <option [ngValue]="5">5 items por página</option>
         <option [ngValue]="10">10 items por página</option>
         <option [ngValue]="15">15 items por página</option>

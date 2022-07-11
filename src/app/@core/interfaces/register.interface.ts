@@ -2,7 +2,7 @@ import { IEquipo } from "./equipo.interface";
 
 export interface IRegisterEquipo {
     nombre: string;
-    valorMaximo: string;
+    valorMaximo?: string;
     valorActual?: string;
 }
 
