@@ -1,1 +1,43 @@
-<p>add-pc works!</p>
+<div class="main">
+      <div class="col">
+        <form class="forma" (ngSubmit)="add()" #forma="ngForm">
+          <div class="cuadro box">
+            <div class="content-logo">
+              <!-- <img class="logo" src="/assets/img/logos/logoGr.png" alt="" /> -->
+            </div>
+            <p class="lema">Agregar Equipo</p>
+   
+            <div>
+              <input type="text" placeholder="Nombre" name="nombre" #nombre="ngModel" [(ngModel)]="register.nombre" class="form-control txt" [ngClass]="{ 'is-valid': nombre.valid, 'is-invalid': nombre.invalid }" required/>
+              <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors">
+                  Ingrese un nombre para el equipo
+                </div>
+              </div>
+  
+              <input type="text" placeholder="valor máximo" name="valorMaximo" #valorMaximo="ngModel" [(ngModel)]="register.valorMaximo" class="form-control txt" [ngClass]="{ 'is-valid': valorMaximo.valid, 'is-invalid': valorMaximo.invalid }" required/>
+              <div class="alert alert-danger" *ngIf="valorMaximo.invalid && (valorMaximo.dirty || valorMaximo.touched)">
+                <div *ngIf="valorMaximo.errors">
+                  Ingrese el valor máximo
+                </div>
+              </div>
+
+              <input type="text" placeholder="valor actual" name="valorActual" #valorActual="ngModel" [(ngModel)]="register.valorActual" class="form-control txt" [ngClass]="{ 'is-valid': valorActual.valid, 'is-invalid': valorActual.invalid }" required/>
+              <div class="alert alert-danger" *ngIf="valorActual.invalid && (valorActual.dirty || valorActual.touched)">
+                <div *ngIf="valorActual.errors">
+                  Ingrese el valor actual
+                </div>
+              </div>
+            </div>
+  
+            <div>
+              <div class="row">
+                <div class="col-lg">
+                  <button [disabled]="forma.invalid" type="submit" class="signup-btn">Registrar Equipo</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>

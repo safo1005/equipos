@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AddPcRoutingModule } from './add-pc-routing.module';
 import { AddPcComponent } from './add-pc.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { AddPcComponent } from './add-pc.component';
   ],
   imports: [
     CommonModule,
-    AddPcRoutingModule
+    AddPcRoutingModule,
+    FormsModule
   ]
 })
 export class AddPcModule { }
